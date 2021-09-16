@@ -24,8 +24,34 @@ import ReactIcon from "../../assets/react.asset.svg";
 import EthColorIcon from "../../assets/ethereum-color.asset.svg";
 import TailwindIcon from "../../assets/tailwindcss.asset.svg";
 
+// Web3
+import { injected } from "../../connectors/connector";
+import { useWeb3React } from "@web3-react/core";
+
 export default function Home() {
   let currentYear = new Date().getFullYear();
+
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React();
+
+  async function connectMetamask() {
+    try {
+      await activate(injected);
+      console.log(account || "0x0");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function disconnectMetamask() {
+    try {
+      await deactivate(injected);
+      console.log(account);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <div>
       <div className="body">
