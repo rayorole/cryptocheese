@@ -1,15 +1,35 @@
 body {
-    background-color: #343434;
+  background-color: #343434;
 }
 
 .show-more-icon {
-    background-color: #2A2A2A;
+  background-color: #2a2a2a;
 }
 
 .bg-navbar {
-    background-color: #2A2A2B;
+  background-color: #2a2a2b;
 }
 
 .bg-active-navbar {
-    background-color: #414141;
+  background-color: #414141;
+}
+
+.about {
+  background-color: #3a3a3a;
+}
+
+.trending {
+  background-color: #3a3a3a;
+}
+
+.card-dark {
+  background-color: #343434;
+}
+
+.light-button {
+  background-color: #4b4b4b;
+}
+
+.footer {
+  background-color: #2b2a2a;
 }
