@@ -26,6 +26,7 @@ import TailwindIcon from "../../assets/tailwindcss.asset.svg";
 
 // Web3
 import { injected } from "../../connectors/connector";
+import { fortmatic } from "../../connectors/connector";
 import { useWeb3React } from "@web3-react/core";
 
 export default function Home() {
@@ -38,6 +39,24 @@ export default function Home() {
     try {
       await activate(injected);
       console.log(account || "0x0");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function connectFortmatic() {
+    try {
+      await activate(fortmatic);
+      console.log(account);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function disconnectFortmatic() {
+    try {
+      await deactivate(fortmatic);
+      console.log(account);
     } catch (e) {
       console.log(e);
     }
@@ -76,6 +95,21 @@ export default function Home() {
                 >
                   Explore
                 </a>
+                {active ? (
+                  <button
+                    onClick={disconnectFortmatic}
+                    className="p-2 shadow-xl pl-3 pr-3 rounded-md font-ropa text-gray-200 border border-white"
+                  >
+                    Disconnect
+                  </button>
+                ) : (
+                  <button
+                    onClick={connectFortmatic}
+                    className="p-2 shadow-xl pl-3 pr-3 rounded-md font-ropa text-gray-200 border border-white"
+                  >
+                    Connect
+                  </button>
+                )}
               </div>
             </div>
           </section>
