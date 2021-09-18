@@ -14,11 +14,17 @@ function getLibrary(provider) {
 
 function App() {
   const Home = React.lazy(() =>
-    import(/* webpackChunkName: "Home" */ "./components/home/home")
+    import(/* webpackChunkName: "Home" */ "./components/home/Home")
   );
 
   const viewFlag = React.lazy(() =>
     import(/* webpackChunkName: "Home" */ "./components/market/flag")
+  );
+
+  const connectWallet = React.lazy(() =>
+    import(
+      /* webpackChunkName: "Home" */ "./components/connect-wallet/ConnectWallet"
+    )
   );
 
   return (
@@ -27,6 +33,7 @@ function App() {
         <React.Suspense fallback={<div></div>}>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/connect-wallet" component={connectWallet} />
             <Route exact path="/flag/:id" component={viewFlag} />
             <Route component={Home} />
           </Switch>

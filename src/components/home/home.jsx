@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 // Components
-import Header from "./header";
+import Header from "../header/Header";
 
 // Heroicons
 import { ChevronLeftIcon } from "@heroicons/react/outline";
@@ -36,70 +36,8 @@ import { useWeb3React } from "@web3-react/core";
 export default function Home() {
   let currentYear = new Date().getFullYear();
 
-  const { active, account, library, connector, activate, deactivate } =
-    useWeb3React();
-
-  async function connectWalletConnect() {
-    try {
-      activate(walletconnect);
-      console.log(account);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function connectFortmatic() {
-    try {
-      activate(fortmatic);
-      console.log(account);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function disconnectFortmatic() {
-    try {
-      await deactivate(fortmatic);
-      console.log(account);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function connectMetamask() {
-    try {
-      await activate(injected);
-      console.log(account || "0x0");
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function disconnectMetamask() {
-    try {
-      await deactivate(injected);
-      console.log(account);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function connectPortis() {
-    try {
-      await activate(portis);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function disconnectPortis() {
-    try {
-      await deactivate(portis);
-      console.log(portis);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  /* prettier-ignore */
+  const { active, account, library, connector, activate, deactivate } = useWeb3React();
 
   return (
     <div>
