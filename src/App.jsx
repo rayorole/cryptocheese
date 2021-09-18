@@ -38,7 +38,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/connect-wallet" component={connectWallet} />
-            <Route exact path="/market" component={Market} />
+            <Route exact path="/flags" component={Market} />
             <Route exact path="/flag/:id" component={viewFlag} />
             <Route component={Home} />
           </Switch>

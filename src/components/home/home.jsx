@@ -52,7 +52,7 @@ export default function Home() {
               </div>
               <div className="m-2 mt-4">
                 <a
-                  href="/market"
+                  href="/flags"
                   className="p-2 shadow-xl pl-3 pr-3 rounded-md font-ropa text-gray-200 border border-white"
                 >
                   Explore
