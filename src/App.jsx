@@ -18,13 +18,17 @@ function App() {
   );
 
   const viewFlag = React.lazy(() =>
-    import(/* webpackChunkName: "Home" */ "./components/market/flag")
+    import(/* webpackChunkName: "viewFlag" */ "./components/market/Flag")
   );
 
   const connectWallet = React.lazy(() =>
     import(
-      /* webpackChunkName: "Home" */ "./components/connect-wallet/ConnectWallet"
+      /* webpackChunkName: "connectWallet" */ "./components/connect-wallet/ConnectWallet"
     )
+  );
+
+  const Market = React.lazy(() =>
+    import(/* webpackChunkName: "Market" */ "./components/market/Market")
   );
 
   return (
@@ -34,6 +38,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/connect-wallet" component={connectWallet} />
+            <Route exact path="/market" component={Market} />
             <Route exact path="/flag/:id" component={viewFlag} />
             <Route component={Home} />
           </Switch>

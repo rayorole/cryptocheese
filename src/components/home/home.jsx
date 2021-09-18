@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 // Components
 import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 // Heroicons
 import { ChevronLeftIcon } from "@heroicons/react/outline";
@@ -16,13 +17,6 @@ import { ExternalLinkIcon } from "@heroicons/react/outline";
 import WorldImageSvg from "../../assets/world.asset.svg";
 import FlagExample from "../../assets/united-states-flag.asset.svg";
 import EthIcon from "../../assets/ethereum.asset.svg";
-import BullIcon from "../../assets/bull.asset.svg";
-import InstagramIcon from "../../assets/instagram.asset.svg";
-import DiscordIcon from "../../assets/discord.asset.svg";
-import GithubIcon from "../../assets/github.asset.svg";
-import ReactIcon from "../../assets/react.asset.svg";
-import EthColorIcon from "../../assets/ethereum-color.asset.svg";
-import TailwindIcon from "../../assets/tailwindcss.asset.svg";
 
 // Web3
 import {
@@ -135,19 +129,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <footer className="footer bottom-0 fixed w-full sm:pt-4 p-2 sm:pb-4 sm:items-center text-white">
-            <div className="flex items-center justify-between">
-              <div className="font-francois flex items-center">
-                <div>Flagnation</div>
-              </div>
-              <div className="flex justify-center items-center">
-                <p className="text-xs mr-2">Made with</p>
-                <img className="mr-1" src={ReactIcon} alt="React" />
-                <img className="mr-1" src={EthColorIcon} alt="Ethereum" />
-                <img src={TailwindIcon} alt="TailwindCSS" />
-              </div>
-            </div>
-          </footer>
+          <Footer />
         </body>
       </div>
     </div>
