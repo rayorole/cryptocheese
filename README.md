@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# 🚩 Welcome to Flagnation! 🚩
+  
+A decentralized market for buying unique flags on the **[Ethereum](https://ethereum.org)** blokchain. There are a total of 10.000 flags and each one of them is unique.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Who we are
 
-## Available Scripts
+Flagnation is proudly developed by [Olaf Mertens](https://www.instagram.com/olaf.mertens/) (UI designer) and [Ray Orolé](https://www.instagram.com/ray.orole/) (Blockchain engineer).
+We are both 16 years old and are truly inspired by the blockchain technology. So that's why we decided to program Flagnation
 
-In the project directory, you can run:
+## How it's made
 
-### `yarn start`
+Flagnation's UI is built with the [React](https://reactjs.org) framework and interacts with the Ethereum blockchain using Web3.<br>
+Off course not everything can be stored on the blockchain, because that would be too expensive.<br>
+That's why the flag medata is not stored in the ERC721 smart contract itself but on a peer-to-peer network for storing and sharing data in a distributed file system called  [IPFS](https://ipfs.io).<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> The core smart contracts of Flagnation are written in Solidity (solc 0.5) and are available [here](https://github.com/rayorole/flagnation-core).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Collaboration
 
-### `yarn test`
+Feel free to inspect the code, find bugs, make improvements on the code and make pull request. 
+We are happy to review them and add them to the official source code.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+git clone https://github.com/rayorole/flagnation-ui.git
+```
