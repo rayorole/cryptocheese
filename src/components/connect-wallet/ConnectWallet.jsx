@@ -1,190 +1,98 @@
 import React, { useEffect, useState } from "react";
 import Header from "../header/Header";
 
+import Fortmatic from "fortmatic";
+import Portis from "@portis/web3";
+
 // Assets
 import MetamaskIcon from "../../assets/metamask.asset.png";
 import FortmaticIcon from "../../assets/fortmatic.asset.png";
 import PortisIcon from "../../assets/portis.asset.png";
 
-import { ChevronRightIcon, ArrowRightIcon } from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 import { ScaleLoader } from "react-spinners";
 
-// Web3
-import {
-  injected,
-  fortmatic,
-  portis,
-  walletconnect,
-} from "../../connectors/connector";
-import { useWeb3React, Web3ReactProvider } from "@web3-react/core";
-
 const Web3 = require("web3");
+let web3 = new Web3("http://localhost:7545");
 
-export default function ConnectWallet() {
-  /* prettier-ignore */
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+const fm = new Fortmatic("pk_live_F0B704FD20C1445A");
+const portis = new Portis("d32803d3-0c01-4de4-b652-6ca80a1e74cb", "mainnet");
 
+export default function ConnectWallet(props) {
   const [metamaskLoading, setMetamaskLoading] = useState(false);
   const [fortmaticLoading, setFortmaticLoading] = useState(false);
   const [portisLoading, setPortisLoading] = useState(false);
 
-  async function connectWalletConnect() {
-    try {
-      activate(walletconnect);
-      console.log(account);
-    } catch (e) {
-      console.log(e);
+  const setMWallet = async () => {
+    if (typeof window.ethereum !== "undefined") {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      console.log(web3.givenProvider.selectedAddress);
+    } else {
+      alert("Metamask not found or initialized!");
     }
-  }
+  };
 
-  async function connectFortmatic() {
-    try {
-      setFortmaticLoading(true);
-      await activate(fortmatic);
-      setFortmaticLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  const setFWallet = async () => {
+    web3 = await new Web3(fm.getProvider());
+    await web3.currentProvider.enable();
+    web3.eth.getAccounts((error, accounts) => {
+      if (error) throw error;
+      console.log(accounts); // ['0x...']
+    });
+  };
 
-  async function disconnectFortmatic() {
-    try {
-      await deactivate(fortmatic);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function connectMetamask() {
-    try {
-      setMetamaskLoading(true);
-      await activate(injected);
-      setMetamaskLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function disconnectMetamask() {
-    try {
-      await deactivate(injected);
-      console.log(connector);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function connectPortis() {
-    try {
-      setPortisLoading(true);
-      await activate(portis);
-      setPortisLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function disconnectPortis() {
-    try {
-      await deactivate(portis);
-      console.log(portis);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  async function getWeb3Info() {
-    async function getFortmaticAcc() {
-      try {
-        let acc = await fortmatic.getAccount();
-        return "Fortmatic account: " + acc;
-      } catch (e) {
-        return "Fortmatic not connected";
-      }
-    }
-
-    async function getMetamaskAcc() {
-      try {
-        let acc = await injected.getAccount();
-        return "Metamask account: " + acc;
-      } catch (e) {
-        return "Injected not connected";
-      }
-    }
-
-    async function getPortisAcc() {
-      try {
-        let acc = await portis.getAccount();
-        return "Portis account: " + acc;
-      } catch (e) {
-        return "Portis not connected";
-      }
-    }
-    console.log(await getPortisAcc());
-    console.log(await getMetamaskAcc());
-    console.log(await getFortmaticAcc());
-  }
-
-  useEffect(() => {}, []);
+  const setPWallet = async () => {
+    web3 = await new Web3(portis.provider);
+    await web3.currentProvider.enable();
+    web3.eth.getAccounts((error, accounts) => {
+      if (error) throw error;
+      console.log(accounts); // ['0x...']
+    });
+  };
 
   return (
     <div>
-      <Header />
-      <body>
-        <section className="about w-11/12 mx-auto mt-5 rounded-lg p-3 text-white font-josefin font-medium flex flex-col">
-          <div>
-            <div className="flex items-center">
-              <ChevronRightIcon className="mr-1 -mt-1" width="16" />
-              Connect to a wallet
+      {props.open ? (
+        <div className="w-screen connectwallet-div card-dark rounded-t-2xl p-2 h-80 fixed bottom-0 flex flex-col">
+          <div className="flex text-white font-poppins font-semibold justify-between items-center">
+            <h1 className="ml-4">Connect to a wallet</h1>
+            <XIcon width="32" height="32" color="white" />
+          </div>
+          <div className="mt-4 text-white text-lg font-josefin">
+            <div
+              onClick={setMWallet}
+              className="about cursor-pointer wallet-card w-11/12 mx-auto p-3 rounded-lg flex justify-between items-center"
+            >
+              <h2>Metamask</h2>
+              <div>
+                <img src={MetamaskIcon} width="40" alt="Metamask" />
+              </div>
+            </div>
+            <div
+              onClick={setFWallet}
+              className="about cursor-pointer wallet-card w-11/12 mx-auto p-3 mt-2 rounded-lg flex justify-between items-center"
+            >
+              <h2>Fortmatic</h2>
+              <div>
+                <img src={FortmaticIcon} width="40" alt="Metamask" />
+              </div>
+            </div>
+            <div
+              onClick={setPWallet}
+              className="about cursor-pointer wallet-card w-11/12 mx-auto p-3 mt-2 rounded-lg flex justify-between items-center"
+            >
+              <h2>Portis</h2>
+              <div>
+                <img src={PortisIcon} width="40" alt="Metamask" />
+              </div>
             </div>
           </div>
-          <div>
-            <div
-              onClick={active ? disconnectMetamask : connectMetamask}
-              className="flex font-poppins border-2 border-darkgray mt-4 items-center rounded-lg py-3 wallet-options justify-between px-5"
-            >
-              {metamaskLoading ? (
-                <ScaleLoader color="white" radius={2} width={4} height={7} />
-              ) : (
-                <p>Metamask</p>
-              )}
-              <img width="32" src={MetamaskIcon} alt="" />
-            </div>
-            <div
-              onClick={active ? disconnectFortmatic : connectFortmatic}
-              className="flex font-poppins border-2 border-darkgray mt-2 items-center rounded-lg py-3 wallet-options justify-between px-5"
-            >
-              {fortmaticLoading ? (
-                <ScaleLoader color="white" radius={2} width={4} height={7} />
-              ) : (
-                <p>Fortmatic</p>
-              )}
-              <img width="32" src={FortmaticIcon} alt="" />
-            </div>
-            <div
-              onClick={active ? disconnectPortis : connectPortis}
-              className="flex font-poppins border-2 border-darkgray mt-2 items-center rounded-lg py-3 wallet-options justify-between px-5"
-            >
-              {portisLoading ? (
-                <ScaleLoader color="white" radius={2} width={4} height={7} />
-              ) : (
-                <p>Portis</p>
-              )}
-              <img width="32" src={PortisIcon} alt="" />
-            </div>
-          </div>
-        </section>
-        <section className="flex justify-center mt-2">
-          <a
-            href="/"
-            className="text-white hover:underline text-sm font-ropa flex"
-          >
-            Or continue without wallet
-            <ArrowRightIcon className="ml-1" width="12" />
-          </a>
-        </section>
-        <button onClick={getWeb3Info}>Click</button>
-      </body>
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
   );
 }

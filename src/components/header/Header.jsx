@@ -9,25 +9,17 @@ import {
   InformationCircleIcon,
   ChatAlt2Icon,
   CodeIcon,
+  ShoppingCartIcon,
+  UserIcon,
+  ShoppingBagIcon,
 } from "@heroicons/react/outline";
 
 import { SyncLoader } from "react-spinners";
 import ConnectWalletBtn from "./connectWalletBtn";
 
-import {
-  injected,
-  fortmatic,
-  portis,
-  walletconnect,
-} from "../../connectors/connector";
-import { useWeb3React } from "@web3-react/core";
-
 import EthIcon from "../../assets/ethereum.asset.svg";
 
 export default function Header() {
-  /* prettier-ignore */
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
-
   return (
     <div>
       <header className="flex sm:pt-4 p-2 sm:pb-4 sm:items-center justify-between">
@@ -55,9 +47,7 @@ export default function Header() {
         </div>
         <div className="flex">
           <div className="p-2 mr-2 cursor-pointer z-10 rounded-md show-more-icon font-ropa flex justify-center text-white items-center">
-            <a href="/connect-wallet">
-              <ConnectWalletBtn />
-            </a>
+            <ConnectWalletBtn />
           </div>
           <motion.div
             className="z-20 relative"

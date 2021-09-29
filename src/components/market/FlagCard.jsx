@@ -7,14 +7,14 @@ import EthIcon from "../../assets/ethereum.asset.svg";
 
 export default function FlagCard(props) {
   return (
-    <div className="w-11/12 mt-3 mb-3 p-2 rounded-md card-dark">
+    <div className="w-11/12 mb-3 p-2 rounded-md card-dark">
       <div className="flex font-josefin items-center text-gray-100">
-        <img src={props.source} alt="Belgium" />
+        <img loading="lazy" src={props.source} alt="Error" />
         <p className="ml-3 text-xl">{props.name}</p>
       </div>
       <div className="flex items-center font-josefin text-gray-100 justify-between mt-3">
         <div>
-          <p className="text-md">Price: {props.price}</p>
+          <p className="text-md">Price: {props.price || "Not found"}</p>
         </div>
         <div className="flex">
           <a

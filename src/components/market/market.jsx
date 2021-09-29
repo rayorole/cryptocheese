@@ -40,13 +40,8 @@ export default function Market() {
             </button>
           </div>
         </div>
-        <section className="about w-full flex flex-col items-center justify-center rounded-md mx-auto mt-4">
-          <FlagCard
-            source={FlagObj.source}
-            url={FlagObj.url}
-            price={FlagObj.price}
-            name={FlagObj.name}
-          />
+        <section className="about pt-3 w-full flex flex-col items-center justify-center rounded-md mx-auto mt-4">
+          <LoadingSkeleton />
           <LoadingSkeleton />
           <LoadingSkeleton />
           <LoadingSkeleton />

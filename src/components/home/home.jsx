@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 // Components
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import ConnectWallet from "../connect-wallet/ConnectWallet";
 
 // Heroicons
 import { ChevronLeftIcon } from "@heroicons/react/outline";
@@ -17,21 +18,15 @@ import { ExternalLinkIcon } from "@heroicons/react/outline";
 import WorldImageSvg from "../../assets/world.asset.svg";
 import FlagExample from "../../assets/united-states-flag.asset.svg";
 import EthIcon from "../../assets/ethereum.asset.svg";
+import DiscordIcon from "../../assets/discord.asset.png";
+import TwitterIcon from "../../assets/twitter.asset.png";
+import InstagramIcon from "../../assets/instagram.asset.png";
 
-// Web3
-import {
-  injected,
-  fortmatic,
-  portis,
-  walletconnect,
-} from "../../connectors/connector";
-import { useWeb3React } from "@web3-react/core";
+require("dotenv").config();
 
 export default function Home() {
   let currentYear = new Date().getFullYear();
-
-  /* prettier-ignore */
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+  const [walletModal, setWalletModal] = useState(true);
 
   return (
     <div>
@@ -46,7 +41,10 @@ export default function Home() {
             />
             <div className="z-10 mt-12 ml-2">
               <div className="font-poppins font-semibold text-gray-50 w-72 text-md p-2">
-                <h2 className="">
+                <h2
+                  onClick={() => console.log(process.env.FORTMATIC_KEY)}
+                  className=""
+                >
                   The first flag marketplace on the Ethereum blockchain
                 </h2>
               </div>
@@ -84,7 +82,49 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="h-20"></section>
+          <section className="">
+            <div className="flex flex-col mx-auto text-white font-josefin pb-5 w-11/12">
+              <h2 className="text-xl mt-5 mb-3 text-center">Latest activity</h2>
+              <div className="text-left">
+                <table class="rounded-lg table-fixed whitespace-nowrap w-11/12">
+                  <thead>
+                    <tr>
+                      <th class="w-2/6">Event</th>
+                      <th class="w-1/4 truncate">From</th>
+                      <th class="w-1/4">To</th>
+                      <th align="right" class="w-1/4">
+                        Date
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Minted</td>
+                      <td className="w-1/4 truncate">
+                        0x0502C8E38FE95c639A76AF42AEA09e910c1f02a7
+                      </td>
+                      <td className="w-8 truncate">
+                        0x0502C8E38FE95c639A76AF42AEA09e910c1f02a7
+                      </td>
+                      <td align="right">21 Jan</td>
+                    </tr>
+                    <tr class="w-12 truncate">
+                      <td>Transfer</td>
+                      <td>0x0502</td>
+                      <td>0x0502</td>
+                      <td align="right">12 Sept</td>
+                    </tr>
+                    <tr>
+                      <td>Sale</td>
+                      <td>0x0502</td>
+                      <td>0x0502</td>
+                      <td align="right">15 Aug</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
           <section className="z-30 trending mb-11">
             <div className="flex flex-col text-center items-center text-white font-josefin pb-5">
               <h2 className="text-xl mt-3 mb-3">Trending flags</h2>
@@ -129,6 +169,7 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <ConnectWallet open={walletModal} />
           <Footer />
         </body>
       </div>

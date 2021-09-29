@@ -14,8 +14,16 @@ body {
   background-color: #2a2a2a;
 }
 
+.connectwallet-div {
+  border: 1px solid rgb(85, 83, 83);
+}
+
 .bg-navbar {
   background-color: #2a2a2b;
+}
+
+.wallet-card {
+  border: 1px solid #464646;
 }
 
 .bg-active-navbar {

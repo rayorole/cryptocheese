@@ -7,7 +7,7 @@ import TailwindIcon from "../../assets/tailwindcss.asset.svg";
 export default function Footer() {
   return (
     <div>
-      <footer className="footer bottom-0 fixed w-full sm:pt-4 p-2 sm:pb-4 sm:items-center text-white">
+      <footer className="footer w-full sm:pt-4 p-2 sm:pb-4 sm:items-center text-white">
         <div className="flex items-center justify-between">
           <div className="font-francois flex items-center">
             <div>Flagnation</div>
